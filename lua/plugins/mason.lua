@@ -14,7 +14,7 @@ return {
     },
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "gopls", "htmx", "html", "tsserver", "tailwindcss", "sqls" },
+				ensure_installed = { "lua_ls", "gopls", "htmx", "html", "tsserver", "tailwindcss", },
 			})
 		end,
 	},
@@ -40,9 +40,6 @@ return {
         capabilities = capabilities,
       })
 			lspconfig.tailwindcss.setup({
-        capabilities = capabilities,
-      })
-			lspconfig.sqls.setup({
         capabilities = capabilities,
       })
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
