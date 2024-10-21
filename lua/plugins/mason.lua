@@ -14,7 +14,7 @@ return {
     },
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "gopls", "htmx", "html", "tsserver", "tailwindcss", },
+				ensure_installed = { "lua_ls", "gopls", "htmx", "html", "ts_ls", "tailwindcss", "pyright" },
 			})
 		end,
 	},
@@ -36,15 +36,19 @@ return {
 			lspconfig.html.setup({
         capabilities = capabilities,
       })
-			lspconfig.tsserver.setup({
+			lspconfig.ts_ls.setup({
         capabilities = capabilities,
       })
 			lspconfig.tailwindcss.setup({
         capabilities = capabilities,
       })
+      lspconfig.pyright.setup({
+        capabilities = capabilities,
+      })
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
+      vim.keymap.set("n", '<leader>rn', vim.lsp.buf.rename, { noremap = true, silent = true, desc = 'Rename variable' })
 		end,
 	},
 }
